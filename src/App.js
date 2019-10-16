@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './css/index.css';
+import './config.js';
 import SearchForm from './components/SearchForm';
 import Navigation from './components/Navigation';
 import PhotoContainer from './components/PhotoContainer';
