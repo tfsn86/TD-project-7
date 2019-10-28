@@ -8,22 +8,13 @@ import SearchForm from './components/SearchForm';
 import Navigation from './components/Navigation';
 import PhotoContainer from './components/PhotoContainer';
 
-export default class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			photos: [],
-			dogs: [],
-			cats: [],
-			lions: []
-		};
-	}
+class App extends Component {
+	state = {
+		photos: []
+	};
 
 	componentDidMount = () => {
 		this.performSearch();
-		this.dogsSearch();
-		this.catsSearch();
-		this.lionsSearch();
 	};
 
 	performSearch = query => {
@@ -39,9 +30,6 @@ export default class App extends Component {
 				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
-		/* .finally(function() {
-      // always executed
-    }) */
 	};
 
 	dogsSearch = () => {
@@ -50,16 +38,13 @@ export default class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=dogs&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ dogs: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo });
 				// handle success
 			})
 			.catch(error => {
 				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
-		/* .finally(function() {
-    // always executed
-  }) */
 	};
 
 	catsSearch = () => {
@@ -68,16 +53,13 @@ export default class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=cats&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ cats: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo });
 				// handle success
 			})
 			.catch(error => {
 				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
-		/* .finally(function() {
-    // always executed
-  }) */
 	};
 
 	lionsSearch = () => {
@@ -86,16 +68,13 @@ export default class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=lions&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ lions: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo });
 				// handle success
 			})
 			.catch(error => {
 				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
-		/* .finally(function() {
-    // always executed
-  }) */
 	};
 
 	render() {
@@ -103,8 +82,19 @@ export default class App extends Component {
 			<Router>
 				<div className="container">
 					<SearchForm onSearch={this.performSearch} />
-					<Navigation />
+					<Navigation
+						onCatsClick={this.catsSearch}
+						onDogsClick={this.dogsSearch}
+						onLionsClick={this.lionsSearch}
+					/>
 					<Switch>
+						<Route
+							exact
+							path="/search/:query"
+							render={props => (
+								<PhotoContainer {...props} photos={this.state.photos} />
+							)}
+						/>
 						<Route
 							exact
 							path="/"
@@ -114,20 +104,20 @@ export default class App extends Component {
 						/>
 						<Route
 							path="/dogs"
-							render={() => (
-								<PhotoContainer data={this.state.dogs} title="Dogs" />
+							render={props => (
+								<PhotoContainer {...props} data={this.state.photos} />
 							)}
 						/>
 						<Route
 							path="/cats"
-							render={() => (
-								<PhotoContainer data={this.state.cats} title="Cats" />
+							render={props => (
+								<PhotoContainer {...props} data={this.state.photos} />
 							)}
 						/>
 						<Route
 							path="/lions"
-							render={() => (
-								<PhotoContainer data={this.state.lions} title="Lions" />
+							render={props => (
+								<PhotoContainer {...props} data={this.state.photos} />
 							)}
 						/>
 					</Switch>
@@ -136,3 +126,5 @@ export default class App extends Component {
 		);
 	}
 }
+
+export default App;
