@@ -14,13 +14,28 @@ class App extends Component {
 	};
 
 	componentDidMount = () => {
-		this.performSearch();
+		this.defaultSearch();
 	};
 
 	performSearch = query => {
 		axios
 			.get(
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
+			)
+			.then(response => {
+				this.setState({ photos: response.data.photos.photo });
+				// handle success
+			})
+			.catch(error => {
+				// handle error
+				console.log('Error fetching and parsing data', error);
+			});
+	};
+
+	defaultSearch = () => {
+		axios
+			.get(
+				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=architecture&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo });
