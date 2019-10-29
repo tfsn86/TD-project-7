@@ -7,10 +7,12 @@ import axios from 'axios';
 import SearchForm from './components/SearchForm';
 import Navigation from './components/Navigation';
 import PhotoContainer from './components/PhotoContainer';
+import RouteNotFound from './components/RouteNotFound.js';
 
 class App extends Component {
 	state = {
-		photos: []
+		photos: [],
+		loading: true
 	};
 
 	componentDidMount = () => {
@@ -23,7 +25,7 @@ class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ photos: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo, loading: false });
 				// handle success
 			})
 			.catch(error => {
@@ -38,7 +40,7 @@ class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=architecture&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ photos: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo, loading: false });
 				// handle success
 			})
 			.catch(error => {
@@ -53,7 +55,7 @@ class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=dogs&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ photos: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo, loading: false });
 				// handle success
 			})
 			.catch(error => {
@@ -68,7 +70,7 @@ class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=cats&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ photos: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo, loading: false });
 				// handle success
 			})
 			.catch(error => {
@@ -83,7 +85,7 @@ class App extends Component {
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=lions&per_page=24&format=json&nojsoncallback=1`
 			)
 			.then(response => {
-				this.setState({ photos: response.data.photos.photo });
+				this.setState({ photos: response.data.photos.photo, loading: false });
 				// handle success
 			})
 			.catch(error => {
@@ -102,39 +104,61 @@ class App extends Component {
 						onDogsClick={this.dogsSearch}
 						onLionsClick={this.lionsSearch}
 					/>
+
 					<Switch>
 						<Route
 							exact
 							path="/search/:query"
 							render={props => (
-								<PhotoContainer {...props} data={this.state.photos} />
+								<PhotoContainer
+									{...props}
+									data={this.state.photos}
+									loading={this.state.loading}
+								/>
 							)}
 						/>
 						<Route
 							exact
 							path="/"
 							render={props => (
-								<PhotoContainer {...props} data={this.state.photos} />
+								<PhotoContainer
+									{...props}
+									data={this.state.photos}
+									loading={this.state.loading}
+								/>
 							)}
 						/>
 						<Route
 							path="/dogs"
 							render={props => (
-								<PhotoContainer {...props} data={this.state.photos} />
+								<PhotoContainer
+									{...props}
+									data={this.state.photos}
+									loading={this.state.loading}
+								/>
 							)}
 						/>
 						<Route
 							path="/cats"
 							render={props => (
-								<PhotoContainer {...props} data={this.state.photos} />
+								<PhotoContainer
+									{...props}
+									data={this.state.photos}
+									loading={this.state.loading}
+								/>
 							)}
 						/>
 						<Route
 							path="/lions"
 							render={props => (
-								<PhotoContainer {...props} data={this.state.photos} />
+								<PhotoContainer
+									{...props}
+									data={this.state.photos}
+									loading={this.state.loading}
+								/>
 							)}
 						/>
+						<Route component={RouteNotFound} />
 					</Switch>
 				</div>
 			</Router>
