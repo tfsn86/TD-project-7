@@ -21,9 +21,7 @@ In the project I have:
 
 Before you can use this app you need to request a non commercial API key at: https://www.flickr.com/services/apps/create/apply Afterwards you have to create a config file and list the following lines:
 
-### `const apiKEY = "a82f50f304a22a53dbe381c952dc9ed8";
-
-export default apiKEY;`
+### `const apiKEY = "a82f50f304a22a53dbe381c952dc9ed8"; export default apiKEY;`
 
 ## Available Scripts
 
