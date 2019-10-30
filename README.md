@@ -1,6 +1,20 @@
 ##
 
-# Available Scripts
+# React Gallery App
+
+This project is a part of the full stack JavaScript Techgree on www.teamtreehouse.com.
+
+The project is about creating an image gallery app using React.
+
+In the project I have:
+
+- Used JavaScript and JSX to build out the gallery components in a modular fashion.
+- Used React Router to set up routes for three default topic pages and a search page.
+- Used Axios to fetch data from the Flickr API and used it to display images in the app.
+- Added logic to handle the search and various requirements of the project.
+- Added to the supplied CSS to personalize the project.
+
+## Available Scripts
 
 In the project directory, you can run:
 
