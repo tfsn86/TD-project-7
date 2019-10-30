@@ -26,10 +26,8 @@ class App extends Component {
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo, loading: false });
-				// handle success
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
 	};
@@ -41,10 +39,8 @@ class App extends Component {
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo, loading: false });
-				// handle success
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
 	};
@@ -56,10 +52,8 @@ class App extends Component {
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo, loading: false });
-				// handle success
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
 	};
@@ -71,10 +65,8 @@ class App extends Component {
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo, loading: false });
-				// handle success
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
 	};
@@ -86,10 +78,8 @@ class App extends Component {
 			)
 			.then(response => {
 				this.setState({ photos: response.data.photos.photo, loading: false });
-				// handle success
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
 			});
 	};
