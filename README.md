@@ -12,7 +12,18 @@ In the project I have:
 - Used React Router to set up routes for three default topic pages and a search page.
 - Used Axios to fetch data from the Flickr API and used it to display images in the app.
 - Added logic to handle the search and various requirements of the project.
-- Added to the supplied CSS to personalize the project.
+- Added to the supplied CSS to personalize the project. The background color of the search icon and navigation links has been changed.
+- Added a loading indicator that displays when the app fetches data.
+- Added a friendly message when no images are found on search.
+- Added page not found 404 message when a URL does not match an existing route.
+
+# How to use the app
+
+Before you can use this app you need to request a non commercial API key at: https://www.flickr.com/services/apps/create/apply Afterwards you have to create a config file and list the following lines:
+
+### `const apiKEY = "a82f50f304a22a53dbe381c952dc9ed8";
+
+export default apiKEY;`
 
 ## Available Scripts
 
