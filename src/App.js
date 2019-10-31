@@ -20,6 +20,8 @@ class App extends Component {
 	};
 
 	performSearch = query => {
+		this.setState({ loading: true });
+
 		axios
 			.get(
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=${query}&per_page=24&format=json&nojsoncallback=1`
@@ -46,6 +48,8 @@ class App extends Component {
 	};
 
 	dogsSearch = () => {
+		this.setState({ loading: true });
+
 		axios
 			.get(
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=dogs&per_page=24&format=json&nojsoncallback=1`
@@ -59,6 +63,8 @@ class App extends Component {
 	};
 
 	catsSearch = () => {
+		this.setState({ loading: true });
+
 		axios
 			.get(
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=cats&per_page=24&format=json&nojsoncallback=1`
@@ -72,6 +78,8 @@ class App extends Component {
 	};
 
 	lionsSearch = () => {
+		this.setState({ loading: true });
+
 		axios
 			.get(
 				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKEY}&tags=lions&per_page=24&format=json&nojsoncallback=1`
